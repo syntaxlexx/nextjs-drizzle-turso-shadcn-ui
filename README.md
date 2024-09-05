@@ -11,7 +11,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Clerk Auth
 
 #### Dashboards
-- Admin Dashboard
+- Admin Dashboard - [Clert middleware](https://clerk.com/docs/references/nextjs/clerk-middleware#clerk-middleware-next-js)
 - User Dashboard
 
 #### Extra
