@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Loader, Menu } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import {
   Sheet,
@@ -10,6 +10,16 @@ import {
 } from "./ui/sheet";
 import { navigationMenuTriggerStyle } from "./ui/navigation-menu";
 import { SITE } from "@/lib/constants";
+import Link from "next/link";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 interface Props {}
 
@@ -19,16 +29,16 @@ const Header = async ({}: Props) => {
       <div className="container">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+            <Link href={"/"} className="flex items-center gap-2">
               <img
                 src="https://www.shadcnblocks.com/images/block/block-1.svg"
                 className="w-8"
                 alt="logo"
               />
-              <span className="text-xl font-bold">Shadcn Blocks</span>
-            </div>
+              <span className="text-xl font-bold">{SITE.name}</span>
+            </Link>
             <div className="flex items-center">
-              <a
+              <Link
                 className={cn(
                   "text-muted-foreground",
                   navigationMenuTriggerStyle,
@@ -36,10 +46,10 @@ const Header = async ({}: Props) => {
                     variant: "ghost",
                   }),
                 )}
-                href="#"
+                href="/"
               >
                 Home
-              </a>
+              </Link>
 
               <a
                 className={cn(
@@ -68,9 +78,24 @@ const Header = async ({}: Props) => {
               </a>
             </div>
           </div>
-          <div className="flex gap-2">
-            <Button variant={"outline"}>Log in</Button>
-            <Button>Sign up</Button>
+          <div className="flex items-center gap-2">
+            <ClerkLoading>
+              <Loader className="text-muted-foreground h-5 w-5 animate-spin" />
+            </ClerkLoading>
+
+            <ClerkLoaded>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button>Sign in</Button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <Button variant={"outline"}>Sign up</Button>
+                </SignUpButton>
+              </SignedOut>
+            </ClerkLoaded>
           </div>
         </nav>
         <div className="block lg:hidden">
@@ -176,8 +201,26 @@ const Header = async ({}: Props) => {
                     </a>
                   </div>
                   <div className="mt-2 flex flex-col gap-3">
-                    <Button variant={"outline"}>Log in</Button>
-                    <Button>Sign up</Button>
+                    <ClerkLoading>
+                      <Loader className="text-muted-foreground h-5 w-5 animate-spin" />
+                    </ClerkLoading>
+
+                    <ClerkLoaded>
+                      <SignedIn>
+                        <Link href={"/dashboard"}>
+                          <Button>Dashboard</Button>
+                        </Link>
+                        <UserButton />
+                      </SignedIn>
+                      <SignedOut>
+                        <SignInButton mode="modal">
+                          <Button variant={"outline"}>Log in</Button>
+                        </SignInButton>
+                        <SignUpButton mode="modal">
+                          <Button>Sign up</Button>
+                        </SignUpButton>
+                      </SignedOut>
+                    </ClerkLoaded>
                   </div>
                 </div>
               </SheetContent>
