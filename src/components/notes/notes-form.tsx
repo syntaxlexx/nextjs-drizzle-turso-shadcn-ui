@@ -12,11 +12,16 @@ export default function NotesForm() {
     startTransition(() => {
       addNoteAction(formData);
       ref.current?.reset();
+      // focus on the first input
+      const firstInput = ref.current?.querySelector("input");
+      if (firstInput) {
+        firstInput.focus();
+      }
     });
   };
 
   return (
-    <div className="bg-slate-200 px-4 py-6 rounded-lg mt-5 ring-1 ring-inset ring-slate-300">
+    <div className="bg-slate-200 px-4 py-6 rounded-lg ring-1 ring-inset ring-slate-300 w-full">
       <h1 className="text-lg font-semibold leading-7 text-gray-900">
         Add Note
       </h1>

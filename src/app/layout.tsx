@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/footer";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -20,6 +21,8 @@ export default function RootLayout({
       <head />
       <body className={font.className}>
         <main>{children}</main>
+
+        <Footer />
 
         <Toaster />
       </body>
