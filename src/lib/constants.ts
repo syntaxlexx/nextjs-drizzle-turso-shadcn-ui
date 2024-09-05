@@ -7,4 +7,5 @@ export const GITHUB_CLONE_URL =
 export const SITE = {
   name: "Nextjs Starter-kit",
   description: "The best starter-kit for Next.js",
+  logo: "https://www.shadcnblocks.com/images/block/block-1.svg",
 };

@@ -1,10 +1,12 @@
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
+import { SITE } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import { ClerkProvider } from "@clerk/nextjs";
-import { SITE } from "@/lib/constants";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   description: SITE.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -22,7 +24,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <head />
-        <body className={font.className}>
+        <body className={cn("relative", font.className)}>
+          <div className="sticky top-0 z-10 bg-gray-200 bg-opacity-40 py-4 backdrop-blur-md backdrop-filter">
+            <Header />
+          </div>
+
           <main>{children}</main>
 
           <Footer />
