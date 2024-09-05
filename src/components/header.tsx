@@ -85,10 +85,14 @@ const Header = async ({}: Props) => {
 
             <ClerkLoaded>
               <SignedIn>
+                <Link href={"/dashboard"}>
+                  <Button>Dashboard</Button>
+                </Link>
+
                 <UserButton />
               </SignedIn>
               <SignedOut>
-                <SignInButton mode="modal">
+                <SignInButton mode="modal" forceRedirectUrl={"/dashboard"}>
                   <Button>Sign in</Button>
                 </SignInButton>
                 <SignUpButton mode="modal">
@@ -213,7 +217,10 @@ const Header = async ({}: Props) => {
                         <UserButton />
                       </SignedIn>
                       <SignedOut>
-                        <SignInButton mode="modal">
+                        <SignInButton
+                          mode="modal"
+                          forceRedirectUrl={"/dashboard"}
+                        >
                           <Button variant={"outline"}>Log in</Button>
                         </SignInButton>
                         <SignUpButton mode="modal">
