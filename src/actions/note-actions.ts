@@ -1,7 +1,8 @@
 "use server";
 
-import { db } from "@/db/index";
+import db from "@/db";
 import { notes } from "@/db/schema";
+import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -15,7 +16,9 @@ export async function addNoteAction(formData: FormData) {
     throw new Error("Title and content are required");
   }
 
-  await db.insert(notes).values(rawFormData);
+  const { userId } = auth();
+
+  await db.insert(notes).values({ ...rawFormData, userId });
 
   revalidatePath("/");
 }

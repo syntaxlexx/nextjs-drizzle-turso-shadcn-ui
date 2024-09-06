@@ -1,10 +1,12 @@
 {
-  "name": "bsg-game",
+  "name": "nextjs-drizzle-turso-shadcn-ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "db:push": "bunx drizzle-kit push",
     "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit migrate",
+    "db:drop": "bunx drizzle-kit drop",
     "db:studio": "bunx drizzle-kit studio",
     "db:seed": "bun ./src/scripts/seed.ts",
     "dev": "next dev",

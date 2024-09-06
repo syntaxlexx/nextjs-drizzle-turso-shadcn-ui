@@ -21,7 +21,8 @@ const Note: FC<Props> = ({ note }) => {
   return (
     <div
       key={note.id}
-      className="bg-slate-100 rounded-lg p-2 ring-1 ring-inset ring-gray-200 ">
+      className="rounded-lg border border-gray-100 px-4 py-2 shadow-lg transition hover:shadow-xl"
+    >
       <div className="flex space-x-3">
         <h1 className="block text-sm font-medium leading-6 text-gray-900">
           Title:
@@ -39,7 +40,7 @@ const Note: FC<Props> = ({ note }) => {
           Created at:
         </h1>
         <p className="block text-sm leading-6 text-gray-900">
-          {note.created_at}
+          {note.createdAt}
         </p>
       </div>
 
@@ -49,7 +50,8 @@ const Note: FC<Props> = ({ note }) => {
           type="submit"
           variant="destructive"
           className="w-full"
-          disabled={isPending}>
+          disabled={isPending}
+        >
           {isPending ? "Deleting..." : "Delete"}
         </Button>
       </form>

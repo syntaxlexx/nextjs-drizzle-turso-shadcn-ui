@@ -21,15 +21,16 @@ export default function NotesForm() {
   };
 
   return (
-    <div className="bg-slate-200 px-4 py-6 rounded-lg ring-1 ring-inset ring-slate-300 w-full">
-      <h1 className="text-lg font-semibold leading-7 text-gray-900">
+    <div className="w-full rounded-lg bg-gray-100 px-4 py-6 ring-1 ring-inset ring-slate-300">
+      <h1 className="text-center text-xl font-semibold leading-7 text-gray-900">
         Add Note
       </h1>
 
       <form action={onSubmitHandler} ref={ref}>
         <label
           className="block text-sm font-medium leading-6 text-gray-900"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Title
         </label>
         <input
@@ -40,7 +41,8 @@ export default function NotesForm() {
         />
         <label
           className="block text-sm font-medium leading-6 text-gray-900"
-          htmlFor="content">
+          htmlFor="content"
+        >
           Content
         </label>
         <input
@@ -50,7 +52,7 @@ export default function NotesForm() {
           required
         />
 
-        <Button type={"submit"} className="w-full mt-2 " disabled={isPending}>
+        <Button type={"submit"} className="mt-2 w-full" disabled={isPending}>
           {isPending ? "Adding..." : "Add"}
         </Button>
       </form>
