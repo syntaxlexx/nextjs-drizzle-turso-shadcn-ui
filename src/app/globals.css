@@ -2,19 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg {
-  background-image: "/bg.webp";
-  background-size: cover;
-  background-repeat: no-repeat;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24.6 95% 53.1%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24.6 95% 53.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 20.5 90.2% 48.2%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 20.5 90.2% 48.2%;
+  }
 }
-.bg-pattern {
-  background-color: #e5e5f7;
-  opacity: 0.1;
-  background-image: linear-gradient(135deg, #101010 25%, transparent 25%),
-    linear-gradient(225deg, #101010 25%, transparent 25%),
-    linear-gradient(45deg, #101010 25%, transparent 25%),
-    linear-gradient(315deg, #101010 25%, #e5e5f7 25%);
-  background-position: 7px 0, 7px 0, 0 0, 0 0;
-  background-size: 7px 7px;
-  background-repeat: repeat;
+
+
+@layer components {
+  .text-error {
+    @apply mt-1 px-1 text-xs text-red-500;
+  }
+  
+  /* Simple Table */
+  .table-responsive {
+    @apply w-full overflow-x-auto overflow-y-hidden;
+  }
+  .simple-table {
+    @apply w-full border-collapse text-left;
+  }
+  .simple-table thead tr td,
+  .simple-table thead tr th,
+  .simple-table tbody tr td,
+  .simple-table tbody tr th,
+  .simple-table tfoot tr td
+  {
+    @apply py-1.5 px-3;
+  }
+  .simple-table tbody tr {
+    @apply bg-white border-b text-left dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-100;
+  }
+  .simple-table tfoot tr {
+    @apply bg-gray-100 border-b text-center dark:bg-gray-800 dark:border-gray-700;
+  }
+  .simple-table.striped tbody tr:nth-of-type(odd) { 
+    @apply bg-gray-50;
+  }
+  
+
+  .dashboard-card {
+    @apply bg-white rounded-lg shadow-lg space-y-4 p-4;
+  } 
 }
